@@ -501,23 +501,29 @@ function initFancybox() {
 // ===== Testimonials Slider =====
 const testimonials = [
     {
-        name: "Sarah Johnson",
-        role: "CEO, Tech Innovations Inc.",
+        name: "Address",
+        role: "Hotels & Resorts",
         text: "Admal LLC transformed our entire office space. Their integrated approach saved us time and money, and the results are spectacular!",
-        avatar: "https://randomuser.me/api/portraits/women/32.jpg"
+        avatar: "assets/imgs/logos/address.png"
     },
     {
-        name: "Michael Chen",
-        role: "Director, Global Retail Corp",
+        name: "DAMAC Group",
+        role: "Real Estate,tech,hospitality and sports",
         text: "The digital signage solutions they implemented have significantly improved our customer engagement. Professional service from start to finish.",
-        avatar: "https://randomuser.me/api/portraits/men/54.jpg"
+        avatar: "assets/imgs/logos/damac.png"
     },
     {
-        name: "Emma Rodriguez",
+        name: "",
         role: "Manager, Luxury Hotels Group",
         text: "From MEP integration to interior design, Admal LLC delivered beyond our expectations. Their attention to detail is exceptional.",
-        avatar: "https://randomuser.me/api/portraits/women/65.jpg"
-    }
+        avatar: "assets/imgs/logos/emaar.png"
+    },
+        {
+        name: "KCAL",
+        role: "",
+        text: "From MEP integration to interior design, Admal LLC delivered beyond our expectations. Their attention to detail is exceptional.",
+        avatar: "assets/imgs/logos/kcal.png"
+    },
 ];
 
 const testimonialTrack = document.querySelector('.testimonial-track');
