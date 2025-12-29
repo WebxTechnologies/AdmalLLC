@@ -588,17 +588,30 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ===== Services Section ===== */
-.services {
-    padding: var(--space-2xl) 0;
-    background: var(--secondary);
-}
-
+/* ===== Services Grid - 2 cards per row on desktop ===== */
 .services-grid {
     display: grid;
     gap: var(--space-xl);
     margin-bottom: var(--space-2xl);
 }
 
+/* Mobile: 1 card per row */
+@media (max-width: 767px) {
+    .services-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-lg);
+    }
+}
+
+/* Desktop: 2 cards per row */
+@media (min-width: 768px) {
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-xl);
+    }
+}
+
+/* ===== Service Card - Consistent Height ===== */
 .service-card {
     background: var(--primary);
     border-radius: var(--radius-lg);
@@ -606,8 +619,10 @@ h1, h2, h3, h4, h5, h6 {
     box-shadow: var(--shadow-md);
     transition: all var(--transition-base);
     position: relative;
-    display: grid;
-    grid-template-rows: auto 1fr;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 450px;
 }
 
 .service-card:hover {
@@ -615,22 +630,11 @@ h1, h2, h3, h4, h5, h6 {
     box-shadow: var(--shadow-xl);
 }
 
-.service-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: var(--gradient);
-    z-index: 1;
-}
-
 .service-card-inner {
     padding: var(--space-lg);
     display: flex;
     flex-direction: column;
-    height: 100%;
+    flex: 1;
 }
 
 .service-icon {
@@ -642,6 +646,7 @@ h1, h2, h3, h4, h5, h6 {
     align-items: center;
     justify-content: center;
     margin-bottom: var(--space-md);
+    flex-shrink: 0;
 }
 
 .service-icon i {
@@ -650,15 +655,18 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .service-title {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     margin-bottom: var(--space-sm);
     color: var(--text-primary);
+    line-height: 1.3;
 }
 
 .service-description {
     color: var(--text-secondary);
     margin-bottom: var(--space-md);
     flex-grow: 1;
+    min-height: 80px;
+    line-height: 1.6;
 }
 
 .service-features {
@@ -669,7 +677,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .service-features span {
-    display: flex;
+    display: inline-flex;
     align-items: center;
     gap: 4px;
     background: var(--secondary);
@@ -689,8 +697,75 @@ h1, h2, h3, h4, h5, h6 {
     justify-content: space-between;
     align-items: center;
     margin-top: auto;
+    padding-top: var(--space-md);
+    border-top: 1px solid var(--border);
 }
 
+/* ===== Fixed Image Size ===== */
+.service-image {
+    height: 220px;
+    min-height: 220px;
+    max-height: 220px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.service-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform var(--transition-slow);
+}
+
+.service-card:hover .service-image img {
+    transform: scale(1.1);
+}
+
+/* ===== Responsive Adjustments ===== */
+@media (max-width: 767px) {
+    .service-card {
+        min-height: 400px;
+    }
+    
+    .service-image {
+        height: 200px;
+        min-height: 200px;
+        max-height: 200px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .service-card {
+        min-height: 500px;
+    }
+    
+    .service-image {
+        height: 240px;
+        min-height: 240px;
+        max-height: 240px;
+    }
+}
+
+/* ===== Fix for uneven content ===== */
+.service-card:nth-child(3) .service-description,
+.service-card:nth-child(4) .service-description {
+    min-height: 60px;
+}
+
+/* ===== Badge styling ===== */
+.service-badge {
+    background: var(--gradient-accent);
+    color: var(--text-primary);
+    padding: var(--space-xs) var(--space-sm);
+    border-radius: var(--radius-sm);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* ===== Service Link ===== */
 .service-link {
     display: flex;
     align-items: center;
@@ -699,42 +774,52 @@ h1, h2, h3, h4, h5, h6 {
     text-decoration: none;
     font-weight: 600;
     font-size: 0.875rem;
+    transition: gap var(--transition-base);
 }
 
 .service-link:hover {
     gap: var(--space-sm);
 }
 
-.service-badge {
-    background: var(--gradient-accent);
-    color: var(--text-primary);
-    padding: var(--space-xs) var(--space-sm);
-    border-radius: var(--radius-sm);
-    font-size: 0.75rem;
-    font-weight: 700;
+/* ===== Ensure equal heights in each row ===== */
+.services-grid {
+    align-items: stretch;
 }
 
-.service-image {
-    height: 200px;
-    overflow: hidden;
+.service-card {
+    height: auto;
 }
 
-.service-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform var(--transition-slow);
+/* ===== Top border accent ===== */
+.service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--gradient);
+    z-index: 1;
 }
 
-.service-card:hover .service-image img {
-    transform: scale(1.1);
+/* ===== Card 1 - Interior Fitouts ===== */
+.service-card[data-service="fitouts"]::before {
+    background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
 }
 
-@media (min-width: 768px) {
-    .services-grid {
-        grid-template-columns: repeat(3, 1fr);
-        gap: var(--space-lg);
-    }
+/* ===== Card 2 - MEP Services ===== */
+.service-card[data-service="mep"]::before {
+    background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+}
+
+/* ===== Card 3 - Digital Solutions ===== */
+.service-card[data-service="digital"]::before {
+    background: linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%);
+}
+
+/* ===== Card 4 - Uniforms ===== */
+.service-card[data-service="uniforms"]::before {
+    background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
 }
 
 /* ===== Process Timeline ===== */
