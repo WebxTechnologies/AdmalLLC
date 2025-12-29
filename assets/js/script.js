@@ -492,7 +492,7 @@ function initFancybox() {
 // ===== Testimonials Slider =====
 const testimonials = [
     {
-        name: "Address",
+        name: "The Address",
         role: "Hotels & Resorts",
         text: "Admal LLC transformed our entire office space. Their integrated approach saved us time and money, and the results are spectacular!",
         avatar: "assets/imgs/logos/address.png"
@@ -504,8 +504,8 @@ const testimonials = [
         avatar: "assets/imgs/logos/damac.png"
     },
     {
-        name: "",
-        role: "Manager, Luxury Hotels Group",
+        name: "EMAAR",
+        role: "",
         text: "From MEP integration to interior design, Admal LLC delivered beyond our expectations. Their attention to detail is exceptional.",
         avatar: "assets/imgs/logos/emaar.png"
     },

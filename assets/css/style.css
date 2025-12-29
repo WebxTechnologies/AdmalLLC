@@ -2586,3 +2586,36 @@ h6 {
         gap: 8px !important;
     }
 }
+/* ===== Designer Footer ===== */
+.designer-footer {
+    background: var(--navy);
+    color: white;
+    text-align: center;
+    padding: var(--space-md) 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.designer-footer p {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.875rem;
+    margin-bottom: 4px;
+}
+
+.designer-footer a {
+    color: white;
+    text-decoration: none;
+    font-weight: bolder;
+    /* transition: color var(--transition-base); */
+}
+
+.designer-footer a:hover {
+    color: white;
+    text-decoration: underline;
+}
+
+.designer-footer small {
+    display: block;
+    color: rgb(255, 255, 255);
+    font-size: 0.75rem;
+    margin-top: 4px;
+}
