@@ -2619,3 +2619,55 @@ h6 {
     font-size: 0.75rem;
     margin-top: 4px;
 }
+/* Fix Leaflet map z-index issue */
+.map-container {
+    position: relative;
+    z-index: 1; /* Lower than navbar */
+}
+
+/* Ensure navbar stays on top */
+.navbar {
+    z-index: 1000 !important; /* Ensure navbar stays on top */
+    position: fixed !important;
+}
+
+/* Fix for Leaflet map tiles */
+.leaflet-container {
+    z-index: 1 !important; /* Lower z-index for map */
+    position: relative;
+}
+
+/* Fix for map popups and controls */
+.leaflet-top,
+.leaflet-bottom {
+    z-index: 2 !important; /* Slightly higher than map but lower than navbar */
+}
+
+/* If you have a specific map ID */
+#map {
+    z-index: 1 !important;
+}
+
+/* Fix for any map layers or overlays */
+.leaflet-pane,
+.leaflet-tile,
+.leaflet-marker-icon,
+.leaflet-marker-shadow,
+.leaflet-tile-container,
+.leaflet-overlay-pane,
+.leaflet-shadow-pane,
+.leaflet-marker-pane,
+.leaflet-tooltip-pane,
+.leaflet-popup-pane {
+    z-index: auto !important; /* Let parent control z-index */
+}
+
+/* Specific fix for markers if needed */
+.leaflet-marker-icon {
+    z-index: 500 !important; /* Markers should be above map but below navbar */
+}
+
+/* Fix for interactive elements */
+.leaflet-interactive {
+    z-index: auto !important;
+}
