@@ -31,8 +31,7 @@
     <nav class="navbar">
         <div class="nav-container">
             <div class="nav-logo">
-            <img src="assets/imgs/admallc.png" alt="Admalstar Logo"
-                    style="height: 50px; margin-right: 10px;" />
+                <img src="assets/imgs/admallc.png" alt="Admalstar Logo" style="height: 50px; margin-right: 10px;" />
                 <!-- <span class="logo-gradient">Admal</span><span class="logo-text">LLC</span> -->
             </div>
 
@@ -98,47 +97,141 @@
 
     <!-- Hero Section with Parallax -->
     <section id="home" class="hero">
-        <div class="hero-background" data-parallax></div>
-        <div class="hero-content">
-            <div class="hero-tag">Integrated Design Solutions</div>
-            <h1 class="hero-title">
-                <span class="hero-title-line">Creating Exceptional</span>
-                <span class="hero-title-line highlight">Spaces That Inspire</span>
-            </h1>
-            <p class="hero-description">
-                Where design meets purpose. We create environments that inspire through thoughtful innovation, seamless
-                functionality, and beautiful craftsmanship—turning your vision into spaces that energize, motivate, and
-                elevate every interaction.
-            </p>
-            <div class="hero-buttons">
-                <a href="#gallery" class="btn btn-primary">
-                    <i class="fas fa-play-circle"></i>
-                    View Our Work
-                </a>
-                <a href="#contact" class="btn btn-outline">
-                    <i class="fas fa-calendar-alt"></i>
-                    Book Consultation
-                </a>
+        <div class="hero-slider">
+            <!-- Slide progress bar -->
+            <div class="slide-progress">
+                <div class="progress-bar"></div>
             </div>
 
-            <!-- Stats -->
-            <!-- <div class="hero-stats">
-                <div class="stat-item">
-                    <div class="stat-number" data-count="250">0</div>
-                    <div class="stat-label">Projects Completed</div>
+            <!-- Slide 1 - Interior Fitouts -->
+            <div class="slide active" data-slide="1">
+                <div class="slide-overlay"></div>
+                <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80"
+                    alt="Interior Design" class="slide-image" loading="eager">
+                <div class="slide-content">
+                    <div class="slide-content-inner">
+                        <div class="slide-tag">Interior Excellence</div>
+                        <h1 class="slide-title" style="color: white;">
+                            Creating Exceptional<br>
+                            <span class="highlight">Spaces That Inspire</span>
+                        </h1>
+                        <p class="slide-description">
+                            Create inspiring environments that reflect your vision. Our expert team delivers
+                            custom interior solutions for offices, homes, and commercial spaces with meticulous
+                            attention to detail and quality craftsmanship.
+                        </p>
+                        <div class="hero-buttons">
+                            <a href="#services" class="btn btn-primary">
+                                <i class="fas fa-couch"></i>
+                                View Interior Services
+                            </a>
+                            <a href="gallery.html?filter=fitouts" class="btn btn-outline">
+                                <i class="fas fa-images"></i>
+                                See Interior Projects
+                            </a>
+                        </div>
+                    </div>
                 </div>
-                <div class="stat-item">
-                    <div class="stat-number" data-count="15">0</div>
-                    <div class="stat-label">Years Experience</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number" data-count="50">0</div>
-                    <div class="stat-label">Happy Clients</div>
-                </div>
-            </div> -->
-        </div>
+            </div>
 
+            <!-- Slide 2 - MEP Services -->
+            <div class="slide" data-slide="2">
+                <div class="slide-overlay"></div>
+                <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80"
+                    alt="MEP Engineering" class="slide-image" loading="lazy">
+                <div class="slide-content">
+                    <div class="slide-content-inner">
+                        <div class="slide-tag">Technical Mastery</div>
+                        <h1 class="slide-title" style="color: white;">
+                            Integrated<br>
+                            <span class="highlight">MEP Engineering Solutions</span>
+                        </h1>
+                        <p class="slide-description">
+                            Ensure optimal building performance with our comprehensive Mechanical, Electrical,
+                            and Plumbing services. From design to maintenance, we deliver efficient, reliable
+                            systems that power your success.
+                        </p>
+                        <div class="hero-buttons">
+                            <a href="#services" class="btn btn-primary">
+                                <i class="fas fa-bolt"></i>
+                                Explore MEP Services
+                            </a>
+                            <a href="gallery.html?filter=mep" class="btn btn-outline">
+                                <i class="fas fa-wrench"></i>
+                                Technical Projects
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 3 - Digital Solutions -->
+            <div class="slide" data-slide="3">
+                <div class="slide-overlay"></div>
+                <img src="https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80"
+                    alt="Digital Technology" class="slide-image" loading="lazy">
+                <div class="slide-content">
+                    <div class="slide-content-inner">
+                        <div class="slide-tag">Digital Innovation</div>
+                        <h1 class="slide-title" style="color: white;">
+                            Next-Generation<br>
+                            <span class="highlight">Digital Screen Solutions</span>
+                        </h1>
+
+                        <p class="slide-description">
+                            Captivate your audience with cutting-edge digital displays. Our LED screens,
+                            interactive kiosks, and digital signage solutions transform communication and
+                            create immersive brand experiences.
+                        </p>
+                        <div class="hero-buttons">
+                            <a href="#services" class="btn btn-primary">
+                                <i class="fas fa-desktop"></i>
+                                Digital Services
+                            </a>
+                            <a href="gallery.html?filter=digital" class="btn btn-outline">
+                                <i class="fas fa-play-circle"></i>
+                                View Digital Work
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 4 - Complete Solutions -->
+            <div class="slide" data-slide="4">
+                <div class="slide-overlay"></div>
+                <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80"
+                    alt="Complete Solutions" class="slide-image" loading="lazy">
+                <div class="slide-content">
+                    <div class="slide-content-inner">
+                        <div class="slide-tag">End-to-End Service</div>
+                        <h1 class="slide-title" style="color: white;">
+                            One Team,<br>
+                            <span class="highlight">Complete Project Delivery</span>
+                        </h1>
+                        <p class="slide-description">
+                            Experience seamless project execution with our integrated approach. From concept
+                            to completion, we coordinate all aspects – interiors, MEP, and digital solutions –
+                            ensuring quality, efficiency, and timely delivery.
+                        </p>
+                        <div class="hero-buttons">
+                            <a href="#contact" class="btn btn-primary">
+                                <i class="fas fa-paper-plane"></i>
+                                Start Your Project
+                            </a>
+                            <a href="#about" class="btn btn-outline">
+                                <i class="fas fa-play-circle"></i>
+                                Our Process
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
+
+    <br>
+    <br>
 
     <!-- Services Section with 3D Cards -->
     <section id="services" class="services">
@@ -250,23 +343,13 @@
                         </div>
                         <h3 class="service-title">Uniforms & Promotional Gifts Branding</h3>
                         <p class="service-description">
-                            Uniforms and promotional gifts branding involves customizing apparel and merchandise with company logos,
-                            colors, and slogans to boost visibility and reinforce brand identity. This strategy turns everyday items into walking advertisements, 
+                            Uniforms and promotional gifts branding involves customizing apparel and merchandise with
+                            company logos,
+                            colors, and slogans to boost visibility and reinforce brand identity. This strategy turns
+                            everyday items into walking advertisements,
                             enhancing professionalism for staff and creating memorable giveaways for clients.
 
                         </p>
-                        <!-- <div class="service-features">
-                            <span><i class="fas fa-check"></i> LED Video Walls</span>
-                            <span><i class="fas fa-check"></i> Interactive Displays</span>
-                            <span><i class="fas fa-check"></i> Content Management</span>
-                        </div> -->
-                        <!-- <div class="service-footer">
-                            <a href="#gallery?filter=digital" class="service-link">
-                                View Projects
-                                <i class="fas fa-arrow-right"></i>
-                            </a>
-                            <span class="service-badge">Innovative</span>
-                        </div> -->
                     </div>
                     <div class="service-image">
                         <img src="assets/imgs/img3.jpg" alt="Uniforms" loading="lazy">
@@ -277,7 +360,7 @@
 
             <!-- Process Timeline -->
             <div class="process-timeline">
-                <h3 class="timeline-title">Our Integrated Process</h3>
+                <h3 class="section-title">Our Integrated Process</h3>
                 <div class="timeline">
                     <div class="timeline-item">
                         <div class="timeline-step">01</div>
@@ -354,37 +437,6 @@
             </div>
         </div>
     </section>
-
-    <!-- Interactive Stats Section -->
-    <!-- <section class="stats-section">
-        <div class="container">
-            <div class="stats-grid">
-                <div class="stat-card-large">
-                    <div class="stat-icon">
-                        <i class="fas fa-calendar-check"></i>
-                    </div>
-                    <div class="stat-content">
-                        <div class="stat-number-large" data-count="15">0</div>
-                        <div class="stat-label-large">Years of Excellence</div>
-                        <p class="stat-description">Consistently delivering quality since 2008</p>
-                    </div>
-                </div>
-                
-                <div class="stat-card-large">
-                    <div class="stat-icon">
-                        <i class="fas fa-award"></i>
-                    </div>
-                    <div class="stat-content">
-                        <div class="stat-number-large" data-count="12">0</div>
-                        <div class="stat-label-large">Industry Awards</div>
-                        <p class="stat-description">Recognized for innovation and quality</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> -->
-
-    <!-- About Section with Interactive Map -->
     <section id="about" class="about">
         <div class="container">
             <div class="about-grid">
@@ -393,7 +445,7 @@
                     <p class="about-description">
                         At ADMAL CONTRACTING LLC, we specialize in creating luxury interior spaces through a perfect
                         balance of design excellence, premium craftsmanship,
-                        and quality execution. Based in Deira, Dubai, we deliver bespoke interior solutions tailored to
+                        and quality execution. Based in Dubai, UAE we deliver bespoke interior solutions tailored to
                         your vision,
                         using high-quality materials and meticulous attention to detail. From concept to completion,
                         our team ensures seamless project delivery, making us a trusted partner for refined, functional,
@@ -460,7 +512,8 @@
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title" style="text-align: center;">Client Testimonials</h2>
-                <p class="section-subtitle" style="text-align: center;">What our clients say about our integrated approach</p>
+                <p class="section-subtitle" style="text-align: center;">What our clients say about our integrated
+                    approach</p>
             </div>
 
             <div class="testimonial-slider">
@@ -606,8 +659,8 @@
             <div class="footer-grid">
                 <div class="footer-brand">
                     <div class="footer-logo">
-                       <img src="assets/imgs/admallc.png" alt="Admalstar Logo"
-                    style="height: 70px; margin-right: 10px; border-radius: 3%;" />
+                        <img src="assets/imgs/admallc.png" alt="Admalstar Logo"
+                            style="height: 70px; margin-right: 10px; border-radius: 3%;" />
                     </div>
                     <p class="footer-description">
                         Creating integrated design solutions with interior fitouts, MEP services,
@@ -663,7 +716,7 @@
     <!-- Leaflet JS -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="assets/js/script.js"></script>
-<script src="assets/js/whatsapp-form.js"></script>
+    <script src="assets/js/whatsapp-form.js"></script>
 </body>
 
 </html>

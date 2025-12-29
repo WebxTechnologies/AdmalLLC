@@ -170,9 +170,7 @@ document.querySelectorAll('.service-card, .stat-card-large, .feature, .info-card
     observer.observe(el);
 });
 
-// ===== Gallery Data =====
 const galleryData = [
-    // Fitouts (more than 2)
     {
         id: 1,
         category: 'fitouts',
@@ -213,7 +211,6 @@ const galleryData = [
         image: 'https://images.unsplash.com/photo-1560185893-a55cbc8c57e8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
         aspect: 'landscape'
     },
-    // MEP (more than 2)
     {
         id: 6,
         category: 'mep',
@@ -254,7 +251,6 @@ const galleryData = [
         image: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
         aspect: 'square'
     },
-    // Digital (more than 2)
     {
         id: 11,
         category: 'digital',
@@ -336,11 +332,6 @@ function createGalleryItem(item) {
     galleryItem.setAttribute('data-caption', `<h3>${item.title}</h3><p>${item.description}</p><span class="gallery-category">${categoryNames[item.category]}</span>`);
     galleryItem.className = `gallery-item`;
     galleryItem.setAttribute('data-category', item.category);
-    
-    // Remove aspect ratio class addition since all images will be square
-    // const aspectClass = item.aspect === 'portrait' ? 'aspect-portrait' : 
-    //                    item.aspect === 'landscape' ? 'aspect-landscape' : 'aspect-square';
-    // galleryItem.classList.add(aspectClass);
     
     galleryItem.innerHTML = `
         <img src="${item.image}" alt="${item.title}" loading="lazy">
@@ -725,9 +716,7 @@ if (newsletterForm) {
     });
 }
 
-// ===== Initialize Everything =====
 document.addEventListener('DOMContentLoaded', () => {
-    // Check which page we're on
     const isHomepage = document.querySelector('#gallery .gallery-grid');
     const isGalleryPage = document.querySelector('.full-gallery-grid');
     
@@ -868,4 +857,174 @@ Note: This inquiry was submitted through the ADMAL LLC website contact form.
             console.log('Contact form submitted:', { name, service: serviceNames[service] });
         });
     }
+});
+function initHeroSlider() {
+    const slides = document.querySelectorAll('.slide');
+    const indicators = document.querySelectorAll('.slide-indicator');
+    const progressBar = document.querySelector('.progress-bar');
+    const heroSection = document.querySelector('.hero');
+    
+    if (!slides.length || !progressBar) return;
+    
+    let currentSlide = 0;
+    let slideInterval;
+    const slideDuration = 5000;
+    const transitionDuration = 0;
+    
+    function goToSlide(index) {
+        // Remove active classes from all slides
+        slides.forEach(slide => {
+            slide.classList.remove('active', 'fading');
+        });
+        
+        // Remove active classes from all indicators
+        indicators.forEach(indicator => {
+            indicator.classList.remove('active');
+        });
+        
+        // Reset progress bar
+        progressBar.style.transition = 'none';
+        progressBar.style.width = '0%';
+        
+        // Force reflow to reset animation
+        void progressBar.offsetWidth;
+        
+        // Add active class to new slide
+        slides[index].classList.add('active');
+        
+        // Add active class to corresponding indicator
+        if (indicators[index]) {
+            indicators[index].classList.add('active');
+        }
+        
+        // Start progress bar animation
+        setTimeout(() => {
+            progressBar.style.transition = `width ${slideDuration - transitionDuration}ms linear`;
+            progressBar.style.width = '100%';
+        }, transitionDuration);
+        
+        currentSlide = index;
+    }
+    
+    function nextSlide() {
+        let nextIndex = (currentSlide + 1) % slides.length;
+        
+        // Start fade out animation on current slide
+        slides[currentSlide].classList.add('fading');
+        
+        // After fade out, switch to next slide
+        setTimeout(() => {
+            goToSlide(nextIndex);
+        }, transitionDuration);
+    }
+    
+    function startSlider() {
+        clearInterval(slideInterval);
+        slideInterval = setInterval(nextSlide, slideDuration);
+    }
+    
+    function stopSlider() {
+        clearInterval(slideInterval);
+    }
+    
+    // Initialize slider
+    goToSlide(0);
+    startSlider();
+    
+    // Add click event to indicators
+    indicators.forEach((indicator, index) => {
+        indicator.addEventListener('click', () => {
+            if (index !== currentSlide) {
+                // Start fade out animation on current slide
+                slides[currentSlide].classList.add('fading');
+                
+                // After fade out, switch to clicked slide
+                setTimeout(() => {
+                    goToSlide(index);
+                }, transitionDuration);
+                
+                // Restart auto-slide after manual change
+                setTimeout(() => {
+                    stopSlider();
+                    startSlider();
+                }, transitionDuration + 100);
+            }
+        });
+    });
+
+    if (heroSection) {
+        heroSection.addEventListener('mouseenter', () => {
+            // Pause progress bar
+            const computedStyle = getComputedStyle(progressBar);
+            const currentWidth = computedStyle.width;
+            progressBar.style.transition = 'none';
+            progressBar.style.width = currentWidth;
+            
+            stopSlider();
+        });
+        
+        heroSection.addEventListener('mouseleave', () => {
+            const remainingWidth = 100 - parseFloat(progressBar.style.width || '0');
+            const remainingTime = (remainingWidth / 100) * (slideDuration - transitionDuration);
+            
+            progressBar.style.transition = `width ${remainingTime}ms linear`;
+            progressBar.style.width = '100%';
+            
+            setTimeout(() => {
+                startSlider();
+            }, remainingTime);
+        });
+    }
+    
+    function updateParallax() {
+        const activeSlide = document.querySelector('.slide.active');
+        if (!activeSlide) return;
+        
+        const slideImage = activeSlide.querySelector('.slide-image');
+        if (!slideImage) return;
+        
+        const scrolled = window.pageYOffset;
+        const rate = scrolled * -0.3; // Reduced parallax effect for smoother experience
+        
+        slideImage.style.transform = `translate3d(0, ${rate}px, 0) scale(1)`;
+    }
+
+    window.addEventListener('scroll', updateParallax);
+    window.addEventListener('resize', updateParallax);
+
+    updateParallax();
+
+    slides.forEach(slide => {
+        const img = slide.querySelector('img');
+        if (img) {
+            if (img.complete) {
+                slide.classList.add('loaded');
+            } else {
+                img.addEventListener('load', () => {
+                    slide.classList.add('loaded');
+                });
+            }
+        }
+    });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    initHeroSlider();
+
+    const isHomepage = document.querySelector('#gallery .gallery-grid');
+    const isGalleryPage = document.querySelector('.full-gallery-grid');
+
+    if (isHomepage) {
+        initHomepageGallery();
+    } else if (isGalleryPage) {
+        initFullGallery();
+    }
+
+    initTestimonials();
+
+    startTestimonialRotation();
+
+    checkUrlFilter();
+    
+    updateActiveSection();
 });
