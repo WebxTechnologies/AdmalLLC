@@ -1,4 +1,3 @@
-// ===== Gallery Page Specific JavaScript =====
 document.addEventListener('DOMContentLoaded', function() {
     // ===== Mobile Navigation for Gallery Page =====
     const mobileToggle = document.querySelector('.mobile-toggle');

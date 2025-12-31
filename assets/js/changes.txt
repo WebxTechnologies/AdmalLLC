@@ -1,0 +1,3 @@
+gallery innerHTML
+            <h3 class="gallery-title">${item.title}</h3>
+            <p class="gallery-description">${item.description}</p>

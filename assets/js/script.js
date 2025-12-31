@@ -2,7 +2,7 @@
 window.addEventListener('load', () => {
     const preloader = document.querySelector('.preloader');
     preloader.classList.add('hidden');
-    
+
     setTimeout(() => {
         preloader.style.display = 'none';
     }, 500);
@@ -35,20 +35,20 @@ if (mobileLinks.length > 0) {
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
-        
+
         const targetId = this.getAttribute('href');
         if (targetId === '#') return;
-        
+
         const targetElement = document.querySelector(targetId);
         if (targetElement) {
             const headerHeight = document.querySelector('.navbar').offsetHeight;
             const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
-            
+
             window.scrollTo({
                 top: targetPosition,
                 behavior: 'smooth'
             });
-            
+
             // Update active nav link
             updateActiveNavLink(targetId);
         }
@@ -63,7 +63,7 @@ function updateActiveNavLink(targetId) {
             link.classList.add('active');
         }
     });
-    
+
     // Update mobile nav
     document.querySelectorAll('.mobile-nav-link').forEach(link => {
         link.classList.remove('active');
@@ -86,7 +86,7 @@ window.addEventListener('scroll', () => {
             navbar.classList.remove('scrolled');
         }
     }
-    
+
     // Back to top button
     if (backToTop) {
         if (window.scrollY > 500) {
@@ -95,7 +95,7 @@ window.addEventListener('scroll', () => {
             backToTop.classList.remove('visible');
         }
     }
-    
+
     // Update active section based on scroll position
     updateActiveSection();
 });
@@ -114,12 +114,12 @@ if (backToTop) {
 function updateActiveSection() {
     const sections = document.querySelectorAll('section[id]');
     const scrollPosition = window.scrollY + 100;
-    
+
     sections.forEach(section => {
         const sectionTop = section.offsetTop;
         const sectionHeight = section.offsetHeight;
         const sectionId = section.getAttribute('id');
-        
+
         if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
             updateActiveNavLink(`#${sectionId}`);
         }
@@ -135,7 +135,7 @@ const animateCounters = () => {
         const target = +counter.getAttribute('data-count');
         const count = +counter.innerText;
         const increment = target / speed;
-        
+
         if (count < target) {
             counter.innerText = Math.ceil(count + increment);
             setTimeout(() => animateCounters(), 1);
@@ -156,7 +156,7 @@ const observer = new IntersectionObserver((entries) => {
         if (entry.isIntersecting) {
             // Add animation class
             entry.target.classList.add('animate-in');
-            
+
             // Animate counters if they're in view
             if (entry.target.querySelector('.stat-number') || entry.target.querySelector('.stat-number-large')) {
                 animateCounters();
@@ -174,123 +174,387 @@ const galleryData = [
     {
         id: 1,
         category: 'fitouts',
-        title: 'Modern Office Fitout',
-        description: 'Complete office interior with custom furniture and space optimization',
-        image: 'https://images.unsplash.com/photo-1615529328331-f8917597711f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+        // title: 'Modern Office Fitout',
+        // description: 'Complete office interior with custom furniture and space optimization',
+        image: 'assets/imgs/InteriorFitouts/1.png',
         aspect: 'square'
     },
     {
         id: 2,
         category: 'fitouts',
-        title: 'Luxury Kitchen Fitout',
-        description: 'High-end kitchen design with premium materials and finishes',
-        image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+        // title: 'Luxury Kitchen Fitout',
+        // description: 'High-end kitchen design with premium materials and finishes',
+        image: 'assets/imgs/InteriorFitouts/2.png',
         aspect: 'square'
     },
     {
         id: 3,
         category: 'fitouts',
-        title: 'Hospitality Interior',
-        description: 'Luxury hotel suite with custom furnishings',
-        image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+        // title: 'Hospitality Interior',
+        // description: 'Luxury hotel suite with custom furnishings',
+        image: 'assets/imgs/InteriorFitouts/3.png',
         aspect: 'square'
     },
     {
         id: 4,
         category: 'fitouts',
-        title: 'Minimalist Apartment',
-        description: 'Clean, modern apartment design with smart storage solutions',
-        image: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+        // title: 'Minimalist Apartment',
+        // description: 'Clean, modern apartment design with smart storage solutions',
+        image: 'assets/imgs/InteriorFitouts/4.png',
         aspect: 'portrait'
     },
     {
         id: 5,
         category: 'fitouts',
-        title: 'Executive Boardroom',
-        description: 'Professional boardroom with premium audio-visual integration',
-        image: 'https://images.unsplash.com/photo-1560185893-a55cbc8c57e8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+        // title: 'Executive Boardroom',
+        // description: 'Professional boardroom with premium audio-visual integration',
+        image: 'assets/imgs/InteriorFitouts/5.png',
         aspect: 'landscape'
     },
     {
         id: 6,
-        category: 'mep',
-        title: 'Commercial MEP Integration',
-        description: 'Integrated electrical and HVAC systems for a corporate building',
-        image: 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-        aspect: 'portrait'
+        category: 'fitouts',
+        // title: 'Modern Office Fitout',
+        // description: 'Complete office interior with custom furniture and space optimization',
+        image: 'assets/imgs/InteriorFitouts/6.png',
+        aspect: 'square'
     },
     {
         id: 7,
-        category: 'mep',
-        title: 'Smart Electrical Systems',
-        description: 'Advanced electrical wiring and smart home integration',
-        image: 'https://images.unsplash.com/photo-1621905252507-b35492cc74b4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-        aspect: 'portrait'
+        category: 'fitouts',
+        // title: 'Modern Office Fitout',
+        // description: 'Complete office interior with custom furniture and space optimization',
+        image: 'assets/imgs/InteriorFitouts/7.png',
+        aspect: 'square'
     },
     {
         id: 8,
-        category: 'mep',
-        title: 'Industrial Plumbing',
-        description: 'Commercial-grade plumbing systems for industrial facility',
-        image: 'https://images.unsplash.com/photo-1607472586893-edb57bdc0e39?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-        aspect: 'portrait'
+        category: 'fitouts',
+        // title: 'Modern Office Fitout',
+        // description: 'Complete office interior with custom furniture and space optimization',
+        image: 'assets/imgs/InteriorFitouts/8.png',
+        aspect: 'square'
     },
     {
         id: 9,
-        category: 'mep',
-        title: 'HVAC Installation',
-        description: 'Energy-efficient heating and cooling systems',
-        image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-        aspect: 'landscape'
+        category: 'fitouts',
+        // title: 'Modern Office Fitout',
+        // description: 'Complete office interior with custom furniture and space optimization',
+        image: 'assets/imgs/InteriorFitouts/9.png',
+        aspect: 'square'
     },
     {
         id: 10,
-        category: 'mep',
-        title: 'Electrical Control Panel',
-        description: 'Custom electrical control panel installation',
-        image: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+        category: 'fitouts',
+        // title: 'Executive Boardroom',
+        // description: 'Luxurious boardroom with premium finishes and integrated technology',
+        image: 'assets/imgs/InteriorFitouts/10.png',
         aspect: 'square'
     },
     {
         id: 11,
-        category: 'digital',
-        title: 'Retail Digital Signage',
-        description: 'Interactive digital displays for a retail shopping experience',
-        image: 'https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-        aspect: 'landscape'
+        category: 'fitouts',
+        // title: 'Corporate Lobby',
+        // description: 'Impressive reception area with custom lighting and seating',
+        image: 'assets/imgs/InteriorFitouts/11.png',
+        aspect: 'square'
     },
     {
         id: 12,
-        category: 'digital',
-        title: 'Corporate Display Wall',
-        description: 'Large format LED video wall for corporate headquarters',
-        image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-        aspect: 'landscape'
+        category: 'fitouts',
+        // title: 'Open Workspace',
+        // description: 'Collaborative work environment with ergonomic furniture',
+        image: 'assets/imgs/InteriorFitouts/12.png',
+        aspect: 'square'
     },
     {
         id: 13,
-        category: 'digital',
-        title: 'Interactive Museum Display',
-        description: 'Touchscreen interactive displays for museum exhibits',
-        image: 'https://images.unsplash.com/photo-1571415060716-baff5f717c37?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-        aspect: 'landscape'
+        category: 'fitouts',
+        // title: 'Restaurant Dining',
+        // description: 'Elegant restaurant interior with ambient lighting and custom seating',
+        image: 'assets/imgs/InteriorFitouts/13.png',
+        aspect: 'square'
     },
     {
         id: 14,
-        category: 'digital',
-        title: 'Outdoor LED Billboard',
-        description: 'High-resolution outdoor advertising display',
-        image: 'https://images.unsplash.com/photo-1542744095-fcf48d80b0fd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-        aspect: 'landscape'
+        category: 'fitouts',
+        // title: 'Residential Living',
+        // description: 'Modern apartment with smart home integration',
+        image: 'assets/imgs/InteriorFitouts/14.png',
+        aspect: 'square'
     },
     {
         id: 15,
-        category: 'digital',
-        title: 'Digital Menu Boards',
-        description: 'Interactive menu displays for restaurants and cafes',
-        image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+        category: 'fitouts',
+        // title: 'Hospitality Suite',
+        // description: 'Luxury hotel suite with premium amenities',
+        image: 'assets/imgs/InteriorFitouts/15.png',
         aspect: 'square'
-    }
+    },
+    {
+        id: 16,
+        category: 'fitouts',
+        // title: 'Retail Store',
+        // description: 'Contemporary retail space with strategic product display',
+        image: 'assets/imgs/InteriorFitouts/16.png',
+        aspect: 'square'
+    },
+    {
+        id: 17,
+        category: 'fitouts',
+        // title: 'Luxury Hotel Lobby',
+        // description: 'Grand entrance with custom lighting and premium materials',
+        image: 'assets/imgs/InteriorFitouts/17.png',
+        aspect: 'square'
+    },
+    {
+        id: 18,
+        category: 'fitouts',
+        // title: 'Corporate Office Space',
+        // description: 'Open plan workspace with ergonomic design',
+        image: 'assets/imgs/InteriorFitouts/18.png',
+        aspect: 'square'
+    },
+    {
+        id: 19,
+        category: 'fitouts',
+        // title: 'Restaurant Interior',
+        // description: 'Fine dining atmosphere with custom furniture',
+        image: 'assets/imgs/InteriorFitouts/19.png',
+        aspect: 'square'
+    },
+    {
+        id: 20,
+        category: 'fitouts',
+        // title: 'Modern Retail Store',
+        // description: 'Contemporary shopping experience with strategic displays',
+        image: 'assets/imgs/InteriorFitouts/20.png',
+        aspect: 'square'
+    },
+    {
+        id: 21,
+        category: 'fitouts',
+        // title: 'Residential Apartment',
+        // description: 'Luxury living space with smart home features',
+        image: 'assets/imgs/InteriorFitouts/21.png',
+        aspect: 'square'
+    },
+    {
+        id: 22,
+        category: 'fitouts',
+        // title: 'Healthcare Facility',
+        // description: 'Modern clinic with patient-friendly design',
+        image: 'assets/imgs/InteriorFitouts/22.png',
+        aspect: 'square'
+    },
+    {
+        id: 23,
+        category: 'fitouts',
+        // title: 'Educational Institution',
+        // description: 'Learning environment with collaborative spaces',
+        image: 'assets/imgs/InteriorFitouts/23.png',
+        aspect: 'square'
+    },
+    {
+        id: 24,
+        category: 'fitouts',
+        // title: 'Wellness Center',
+        // description: 'Spa and wellness facility with tranquil design',
+        image: 'assets/imgs/InteriorFitouts/24.png',
+        aspect: 'square'
+    },
+    {
+        id: 25,
+        category: 'fitouts',
+        // title: 'Corporate Lounge',
+        // description: 'Relaxation area for employees and clients',
+        image: 'assets/imgs/InteriorFitouts/25.png',
+        aspect: 'square'
+    },
+    {
+        id: 26,
+        category: 'fitouts',
+        // title: 'Boutique Showroom',
+        // description: 'Product display area with custom lighting',
+        image: 'assets/imgs/InteriorFitouts/26.png',
+        aspect: 'square'
+    },
+    {
+        id: 27,
+        category: 'fitouts',
+        // title: 'Entertainment Lounge',
+        // description: 'Recreational space with multimedia integration',
+        image: 'assets/imgs/InteriorFitouts/27.png',
+        aspect: 'square'
+    },
+    {
+        id: 28,
+        category: 'fitouts',
+        // title: 'Corporate Library',
+        // description: 'Knowledge center with reading areas',
+        image: 'assets/imgs/InteriorFitouts/28.png',
+        aspect: 'square'
+    },
+    {
+        id: 29,
+        category: 'fitouts',
+        // title: 'Executive Office',
+        // description: 'Premium workspace for senior management',
+        image: 'assets/imgs/InteriorFitouts/29.png',
+        aspect: 'square'
+    },
+    {
+        id: 30,
+        category: 'fitouts',
+        // title: 'Cafeteria Design',
+        // description: 'Dining area for corporate staff',
+        image: 'assets/imgs/InteriorFitouts/30.png',
+        aspect: 'square'
+    },
+    {
+        id: 31,
+        category: 'fitouts',
+        // title: 'Reception Area',
+        // description: 'Welcoming entrance with custom reception desk',
+        image: 'assets/imgs/InteriorFitouts/31.png',
+        aspect: 'square'
+    },
+    {
+        id: 32,
+        category: 'fitouts',
+        // title: 'Training Room',
+        // description: 'Educational space with modern teaching aids',
+        image: 'assets/imgs/InteriorFitouts/32.png',
+        aspect: 'square'
+    },
+    {
+        id: 33,
+        category: 'fitouts',
+        // title: 'Luxury Villa',
+        // description: 'High-end residential interior',
+        image: 'assets/imgs/InteriorFitouts/33.png',
+        aspect: 'square'
+    },
+    {
+        id: 34,
+        category: 'fitouts',
+        // title: 'Co-working Space',
+        // description: 'Flexible working environment for startups',
+        image: 'assets/imgs/InteriorFitouts/34.png',
+        aspect: 'square'
+    },
+    {
+        id: 35,
+        category: 'fitouts',
+        // title: 'Medical Center',
+        // description: 'Healthcare facility with modern amenities',
+        image: 'assets/imgs/InteriorFitouts/35.png',
+        aspect: 'square'
+    },
+    {
+        id: 36,
+        category: 'fitouts',
+        // title: 'Banking Hall',
+        // description: 'Financial institution with secure design',
+        image: 'assets/imgs/InteriorFitouts/36.png',
+        aspect: 'square'
+    },
+    {
+        id: 37,
+        category: 'fitouts',
+        // title: 'Event Venue',
+        // description: 'Multi-purpose space for corporate events',
+        image: 'assets/imgs/InteriorFitouts/37.png',
+        aspect: 'square'
+    },
+    {
+        id: 38,
+        category: 'mep',
+        // title: 'Commercial MEP Integration',
+        // description: 'Integrated electrical and HVAC systems for a corporate building',
+        image: 'assets/imgs/MEPServices/1.png',
+        aspect: 'portrait'
+    },
+    {
+        id: 39,
+        category: 'mep',
+        // title: 'Electrical Substation',
+        // description: 'Medium voltage electrical distribution setup',
+        image: 'assets/imgs/MEPServices/2.png',
+        aspect: 'square'
+    },
+    {
+        id: 40,
+        category: 'mep',
+        // title: 'Ventilation System',
+        // description: 'Industrial-grade ventilation for warehouse facility',
+        image: 'assets/imgs/MEPServices/3.png',
+        aspect: 'square'
+    },
+    {
+        id: 41,
+        category: 'mep',
+        // title: 'Sanitary Plumbing',
+        // description: 'Complete sanitary system installation',
+        image: 'assets/imgs/MEPServices/4.png',
+        aspect: 'square'
+    },
+    {
+        id: 42,
+        category: 'mep',
+        // title: 'Sprinkler System',
+        // description: 'Fire suppression sprinkler installation',
+        image: 'assets/imgs/MEPServices/5.png',
+        aspect: 'square'
+    },
+    {
+        id: 43,
+        category: 'mep',
+        // title: 'Solar Power Integration',
+        // description: 'Renewable energy system integration',
+        image: 'assets/imgs/MEPServices/6.png',
+        aspect: 'square'
+    },
+    {
+        id: 44,
+        category: 'mep',
+        // title: 'Heat Recovery System',
+        // description: 'Energy-efficient heat recovery installation',
+        image: 'assets/imgs/MEPServices/7.png',
+        aspect: 'square'
+    },
+    {
+        id: 45,
+        category: 'mep',
+        // title: 'Emergency Lighting',
+        // description: 'Safety lighting system for evacuation',
+        image: 'assets/imgs/MEPServices/8.png',
+        aspect: 'square'
+    },
+    {
+        id: 46,
+        category: 'mep',
+        // title: 'Power Quality System',
+        // description: 'Voltage regulation and power conditioning',
+        image: 'assets/imgs/MEPServices/9.png',
+        aspect: 'square'
+    },
+    {
+        id: 47,
+        category: 'mep',
+        // title: 'BMS Installation',
+        // description: 'Building Management System setup',
+        image: 'assets/imgs/MEPServices/10.png',
+        aspect: 'square'
+    },
+    {
+        id: 48,
+        category: 'digital',
+        // title: 'Retail Digital Signage',
+        // description: 'Interactive digital displays for a retail shopping experience',
+        image: 'assets/imgs/DigitalSolutions/1.png',
+        aspect: 'landscape'
+    },
 ];
 
 // ===== Shuffle Array Function =====
@@ -307,13 +571,13 @@ function shuffleArray(array) {
 function getRandomItemsByCategory(items, itemsPerCategory = 2) {
     const categories = ['fitouts', 'mep', 'digital'];
     let selectedItems = [];
-    
+
     categories.forEach(category => {
         const categoryItems = items.filter(item => item.category === category);
         const shuffled = shuffleArray(categoryItems);
         selectedItems.push(...shuffled.slice(0, itemsPerCategory));
     });
-    
+
     return shuffleArray(selectedItems); // Shuffle final selection
 }
 
@@ -332,33 +596,31 @@ function createGalleryItem(item) {
     galleryItem.setAttribute('data-caption', `<h3>${item.title}</h3><p>${item.description}</p><span class="gallery-category">${categoryNames[item.category]}</span>`);
     galleryItem.className = `gallery-item`;
     galleryItem.setAttribute('data-category', item.category);
-    
+
     galleryItem.innerHTML = `
         <img src="${item.image}" alt="${item.title}" loading="lazy">
         <div class="gallery-overlay">
             <div class="gallery-category">${categoryNames[item.category]}</div>
-            <h3 class="gallery-title">${item.title}</h3>
-            <p class="gallery-description">${item.description}</p>
         </div>
     `;
-    
+
     return galleryItem;
 }
 // ===== Initialize Homepage Gallery =====
 function initHomepageGallery() {
     const galleryGrid = document.querySelector('#gallery .gallery-grid');
     if (!galleryGrid) return;
-    
+
     // Get 2 random items from each category (6 total)
     const homepageItems = getRandomItemsByCategory(galleryData, 2);
-    
+
     galleryGrid.innerHTML = '';
-    
+
     homepageItems.forEach((item) => {
         const galleryItem = createGalleryItem(item);
         galleryGrid.appendChild(galleryItem);
     });
-    
+
     initFancybox();
 }
 
@@ -366,17 +628,17 @@ function initHomepageGallery() {
 function initFullGallery() {
     const galleryGrid = document.querySelector('.full-gallery-grid');
     if (!galleryGrid) return;
-    
+
     galleryGrid.innerHTML = '';
-    
+
     // Show all items for full gallery page
     galleryData.forEach((item) => {
         const galleryItem = createGalleryItem(item);
         galleryGrid.appendChild(galleryItem);
     });
-    
+
     initFancybox();
-    
+
     // Setup filter for full gallery
     setupGalleryFilter(galleryGrid, galleryData);
 }
@@ -385,30 +647,30 @@ function initFullGallery() {
 function setupGalleryFilter(galleryGrid, items) {
     const filterButtons = document.querySelectorAll('.filter-btn');
     if (!filterButtons.length) return;
-    
+
     filterButtons.forEach(button => {
         button.addEventListener('click', () => {
             // Update active button
             filterButtons.forEach(btn => btn.classList.remove('active'));
             button.classList.add('active');
-            
+
             // Filter items
             const currentFilter = button.getAttribute('data-filter');
             let filteredItems;
-            
+
             if (currentFilter === 'all') {
                 filteredItems = items;
             } else {
                 filteredItems = items.filter(item => item.category === currentFilter);
             }
-            
+
             // Clear and render filtered items
             galleryGrid.innerHTML = '';
             filteredItems.forEach(item => {
                 const galleryItem = createGalleryItem(item);
                 galleryGrid.appendChild(galleryItem);
             });
-            
+
             initFancybox();
         });
     });
@@ -421,7 +683,7 @@ if (loadMoreBtn) {
         // Redirect to gallery page
         window.location.href = 'gallery.html';
     });
-    
+
     // Update homepage filter buttons
     const filterButtons = document.querySelectorAll('#gallery .filter-btn');
     if (filterButtons.length > 0) {
@@ -430,14 +692,14 @@ if (loadMoreBtn) {
                 // Get 2 random items from selected category
                 const currentFilter = button.getAttribute('data-filter');
                 let filteredItems;
-                
+
                 if (currentFilter === 'all') {
                     filteredItems = getRandomItemsByCategory(galleryData, 2);
                 } else {
                     const categoryItems = galleryData.filter(item => item.category === currentFilter);
                     filteredItems = shuffleArray(categoryItems).slice(0, 6); // Show 6 items from selected category
                 }
-                
+
                 // Update gallery grid
                 const galleryGrid = document.querySelector('#gallery .gallery-grid');
                 if (galleryGrid) {
@@ -456,7 +718,7 @@ if (loadMoreBtn) {
 // ===== Fancybox Gallery =====
 function initFancybox() {
     if (typeof Fancybox === 'undefined') return;
-    
+
     Fancybox.bind('[data-fancybox="gallery"]', {
         Thumbs: false,
         Toolbar: true,
@@ -509,7 +771,7 @@ const testimonials = [
         text: "From MEP integration to interior design, Admal LLC delivered beyond our expectations. Their attention to detail is exceptional.",
         avatar: "assets/imgs/logos/emaar.png"
     },
-        {
+    {
         name: "KCAL",
         role: "",
         text: "From MEP integration to interior design, Admal LLC delivered beyond our expectations. Their attention to detail is exceptional.",
@@ -525,9 +787,9 @@ let currentTestimonial = 0;
 
 function initTestimonials() {
     if (!testimonialTrack) return;
-    
+
     testimonialTrack.innerHTML = '';
-    
+
     testimonials.forEach((testimonial, index) => {
         const testimonialItem = document.createElement('div');
         testimonialItem.className = 'testimonial-item';
@@ -541,7 +803,7 @@ function initTestimonials() {
         `;
         testimonialTrack.appendChild(testimonialItem);
     });
-    
+
     updateTestimonialPosition();
 }
 
@@ -556,7 +818,7 @@ if (testimonialPrev && testimonialNext) {
         currentTestimonial = (currentTestimonial - 1 + testimonials.length) % testimonials.length;
         updateTestimonialPosition();
     });
-    
+
     testimonialNext.addEventListener('click', () => {
         currentTestimonial = (currentTestimonial + 1) % testimonials.length;
         updateTestimonialPosition();
@@ -593,7 +855,7 @@ const formSuccess = document.querySelector('.form-success');
 if (contactForm) {
     contactForm.addEventListener('submit', async (e) => {
         e.preventDefault();
-        
+
         // Get form values
         const formData = {
             name: document.getElementById('name').value,
@@ -601,28 +863,28 @@ if (contactForm) {
             service: document.getElementById('service').value,
             message: document.getElementById('message').value
         };
-        
+
         // Show loading state
         if (submitBtn) {
             submitBtn.classList.add('loading');
         }
-        
+
         // Simulate API call
         await new Promise(resolve => setTimeout(resolve, 1500));
-        
+
         // Hide loading state
         if (submitBtn) {
             submitBtn.classList.remove('loading');
         }
-        
+
         // Show success message
         if (formSuccess) {
             formSuccess.classList.add('show');
         }
-        
+
         // Reset form
         contactForm.reset();
-        
+
         // Hide success message after 5 seconds
         setTimeout(() => {
             if (formSuccess) {
@@ -637,7 +899,7 @@ if (contactForm) {
 // ===== Parallax Effect =====
 function initParallax() {
     const heroBackground = document.querySelector('.hero-background');
-    
+
     window.addEventListener('scroll', () => {
         if (heroBackground) {
             const scrolled = window.pageYOffset;
@@ -651,12 +913,12 @@ function initParallax() {
 function checkUrlFilter() {
     const urlParams = new URLSearchParams(window.location.search);
     const filter = urlParams.get('filter');
-    
+
     if (filter && ['fitouts', 'mep', 'digital'].includes(filter)) {
         const filterBtn = document.querySelector(`.filter-btn[data-filter="${filter}"]`);
         if (filterBtn) {
             filterBtn.click();
-            
+
             // Scroll to gallery
             setTimeout(() => {
                 const gallerySection = document.querySelector('#gallery');
@@ -679,16 +941,16 @@ serviceCards.forEach(card => {
         const rect = card.getBoundingClientRect();
         const x = e.clientX - rect.left;
         const y = e.clientY - rect.top;
-        
+
         const centerX = rect.width / 2;
         const centerY = rect.height / 2;
-        
+
         const rotateY = (x - centerX) / 25;
         const rotateX = (centerY - y) / 25;
-        
+
         card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px)`;
     });
-    
+
     card.addEventListener('mouseleave', () => {
         card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
     });
@@ -701,12 +963,12 @@ if (newsletterForm) {
         e.preventDefault();
         const emailInput = newsletterForm.querySelector('input');
         const submitBtn = newsletterForm.querySelector('button');
-        
+
         if (emailInput.value) {
             // Simulate subscription
             submitBtn.innerHTML = '<i class="fas fa-check"></i>';
             submitBtn.style.background = '#22c55e';
-            
+
             setTimeout(() => {
                 emailInput.value = '';
                 submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i>';
@@ -719,24 +981,24 @@ if (newsletterForm) {
 document.addEventListener('DOMContentLoaded', () => {
     const isHomepage = document.querySelector('#gallery .gallery-grid');
     const isGalleryPage = document.querySelector('.full-gallery-grid');
-    
+
     // Initialize appropriate gallery
     if (isHomepage) {
         initHomepageGallery();
     } else if (isGalleryPage) {
         initFullGallery();
     }
-    
+
     // Initialize other components
     initTestimonials();
     initParallax();
-    
+
     // Start testimonial rotation
     startTestimonialRotation();
-    
+
     // Check for URL filters
     checkUrlFilter();
-    
+
     // Update active section on load
     updateActiveSection();
 });
@@ -756,11 +1018,11 @@ document.addEventListener("DOMContentLoaded", function () {
         attribution: '&copy; OpenStreetMap contributors',
     }).addTo(map);
 
-     const googleMapsUrl =
+    const googleMapsUrl =
         "https://maps.app.goo.gl/1UHjxUjGwXFCcMps8";
     // Custom marker
     const marker = L.marker(officeLocation).addTo(map);
-        marker.on("click", function () {
+    marker.on("click", function () {
         window.open(googleMapsUrl, "_blank");
     });
 
@@ -772,34 +1034,34 @@ document.addEventListener("DOMContentLoaded", function () {
     `).openPopup();
 });
 // Contact Form Email Client Submission
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const contactForm = document.getElementById('contact-form');
-    
+
     if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
+        contactForm.addEventListener('submit', function (e) {
             e.preventDefault();
-            
+
             // Get form values
             const name = document.getElementById('name').value;
             const phone = document.getElementById('phone').value;
             const email = document.getElementById('email').value;
             const service = document.getElementById('service').value;
             const message = document.getElementById('message').value;
-            
+
             // Service display names
             const serviceNames = {
                 'fitouts': 'Interior Fitouts',
-                'mep': 'MEP Services', 
+                'mep': 'MEP Services',
                 'digital': 'Digital Solutions',
                 'all': 'All Services'
             };
-            
+
             // Your email address
             const yourEmail = 'forcreative25@gmail.com';
-            
+
             // Email subject
             const subject = `New Project Inquiry - ${serviceNames[service] || service}`;
-            
+
             // Professional email body
             const body = `
 NEW PROJECT INQUIRY - ADMAL LLC WEBSITE
@@ -823,13 +1085,13 @@ ${name}
 
 Note: This inquiry was submitted through the ADMAL LLC website contact form.
             `.trim();
-            
+
             // Create mailto link
             const mailtoLink = `mailto:${yourEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-            
+
             // Open email client in new tab
             window.open(mailtoLink, '_blank');
-            
+
             // Show success message
             const successMessage = contactForm.querySelector('.form-success');
             if (successMessage) {
@@ -841,18 +1103,18 @@ Note: This inquiry was submitted through the ADMAL LLC website contact form.
                         <i class="fas fa-lightbulb"></i> Tip: Check your spam folder if you don't see our reply.
                     </div>
                 `;
-                
+
                 // Reset form after 3 seconds
                 setTimeout(() => {
                     contactForm.reset();
                 }, 3000);
-                
+
                 // Hide message after 8 seconds
                 setTimeout(() => {
                     successMessage.style.display = 'none';
                 }, 8000);
             }
-            
+
             // Track form submission
             console.log('Contact form submitted:', { name, service: serviceNames[service] });
         });
@@ -863,86 +1125,86 @@ function initHeroSlider() {
     const indicators = document.querySelectorAll('.slide-indicator');
     const progressBar = document.querySelector('.progress-bar');
     const heroSection = document.querySelector('.hero');
-    
+
     if (!slides.length || !progressBar) return;
-    
+
     let currentSlide = 0;
     let slideInterval;
     const slideDuration = 5000;
     const transitionDuration = 0;
-    
+
     function goToSlide(index) {
         // Remove active classes from all slides
         slides.forEach(slide => {
             slide.classList.remove('active', 'fading');
         });
-        
+
         // Remove active classes from all indicators
         indicators.forEach(indicator => {
             indicator.classList.remove('active');
         });
-        
+
         // Reset progress bar
         progressBar.style.transition = 'none';
         progressBar.style.width = '0%';
-        
+
         // Force reflow to reset animation
         void progressBar.offsetWidth;
-        
+
         // Add active class to new slide
         slides[index].classList.add('active');
-        
+
         // Add active class to corresponding indicator
         if (indicators[index]) {
             indicators[index].classList.add('active');
         }
-        
+
         // Start progress bar animation
         setTimeout(() => {
             progressBar.style.transition = `width ${slideDuration - transitionDuration}ms linear`;
             progressBar.style.width = '100%';
         }, transitionDuration);
-        
+
         currentSlide = index;
     }
-    
+
     function nextSlide() {
         let nextIndex = (currentSlide + 1) % slides.length;
-        
+
         // Start fade out animation on current slide
         slides[currentSlide].classList.add('fading');
-        
+
         // After fade out, switch to next slide
         setTimeout(() => {
             goToSlide(nextIndex);
         }, transitionDuration);
     }
-    
+
     function startSlider() {
         clearInterval(slideInterval);
         slideInterval = setInterval(nextSlide, slideDuration);
     }
-    
+
     function stopSlider() {
         clearInterval(slideInterval);
     }
-    
+
     // Initialize slider
     goToSlide(0);
     startSlider();
-    
+
     // Add click event to indicators
     indicators.forEach((indicator, index) => {
         indicator.addEventListener('click', () => {
             if (index !== currentSlide) {
                 // Start fade out animation on current slide
                 slides[currentSlide].classList.add('fading');
-                
+
                 // After fade out, switch to clicked slide
                 setTimeout(() => {
                     goToSlide(index);
                 }, transitionDuration);
-                
+
                 // Restart auto-slide after manual change
                 setTimeout(() => {
                     stopSlider();
@@ -959,33 +1221,33 @@ function initHeroSlider() {
             const currentWidth = computedStyle.width;
             progressBar.style.transition = 'none';
             progressBar.style.width = currentWidth;
-            
+
             stopSlider();
         });
-        
+
         heroSection.addEventListener('mouseleave', () => {
             const remainingWidth = 100 - parseFloat(progressBar.style.width || '0');
             const remainingTime = (remainingWidth / 100) * (slideDuration - transitionDuration);
-            
+
             progressBar.style.transition = `width ${remainingTime}ms linear`;
             progressBar.style.width = '100%';
-            
+
             setTimeout(() => {
                 startSlider();
             }, remainingTime);
         });
     }
-    
+
     function updateParallax() {
         const activeSlide = document.querySelector('.slide.active');
         if (!activeSlide) return;
-        
+
         const slideImage = activeSlide.querySelector('.slide-image');
         if (!slideImage) return;
-        
+
         const scrolled = window.pageYOffset;
         const rate = scrolled * -0.3; // Reduced parallax effect for smoother experience
-        
+
         slideImage.style.transform = `translate3d(0, ${rate}px, 0) scale(1)`;
     }
 
@@ -1025,6 +1287,6 @@ document.addEventListener('DOMContentLoaded', () => {
     startTestimonialRotation();
 
     checkUrlFilter();
-    
+
     updateActiveSection();
 });
