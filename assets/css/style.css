@@ -2665,10 +2665,26 @@ h6 {
 
 /* Specific fix for markers if needed */
 .leaflet-marker-icon {
-    z-index: 500 !important; /* Markers should be above map but below navbar */
+    z-index: 100 !important; /* Markers should be above map but below navbar */
 }
 
 /* Fix for interactive elements */
 .leaflet-interactive {
     z-index: auto !important;
+}
+#map {
+    height: 400px !important;
+    width: 100% !important;
+    position: relative !important;
+    z-index: 1 !important;
+}
+
+.leaflet-container {
+    height: 100% !important;
+    width: 100% !important;
+    border-radius: var(--radius-lg) !important;
+}
+
+.leaflet-marker-icon {
+    z-index: 1000 !important;
 }

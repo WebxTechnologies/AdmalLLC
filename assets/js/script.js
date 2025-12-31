@@ -1018,20 +1018,68 @@ document.addEventListener("DOMContentLoaded", function () {
         attribution: '&copy; OpenStreetMap contributors',
     }).addTo(map);
 
-    const googleMapsUrl =
-        "https://maps.app.goo.gl/1UHjxUjGwXFCcMps8";
+    const googleMapsUrl = "https://maps.app.goo.gl/1UHjxUjGwXFCcMps8";
+    
     // Custom marker
     const marker = L.marker(officeLocation).addTo(map);
-    marker.on("click", function () {
+    
+    // Create popup content
+    const popupContent = `
+        <div style="min-width: 200px; padding: 10px;">
+            <h3 style="margin: 0 0 10px 0; color: #1e3a8a;">ADMAL CONTRACTING LLC</h3>
+            <p style="margin: 5px 0;"><strong>Location:</strong> Deira, Dubai, UAE</p>
+            <p style="margin: 5px 0;"><strong>PO Box:</strong> 376460</p>
+            <a href="${googleMapsUrl}" target="_blank" 
+               style="display: inline-block; margin-top: 10px; padding: 8px 12px; background: #2563eb; color: white; text-decoration: none; border-radius: 4px; font-size: 14px;">
+                <i class="fas fa-directions"></i> Get Directions
+            </a>
+        </div>
+    `;
+
+    // Create popup instance
+    const popup = L.popup({
+        closeButton: true,
+        autoClose: false,
+        closeOnEscapeKey: true,
+        closeOnClick: false,
+        className: 'company-popup'
+    }).setContent(popupContent);
+
+    // Bind popup to marker
+    marker.bindPopup(popup);
+
+    // Open popup after a short delay
+    setTimeout(() => {
+        marker.openPopup();
+    }, 500);
+
+    // Click event for marker
+    marker.on("click", function (e) {
+        // Prevent default behavior if needed
+        e.originalEvent.preventDefault();
         window.open(googleMapsUrl, "_blank");
     });
 
-    // Popup info
-    marker.bindPopup(`
-        <strong>ADMAL CONTRACTING LLC</strong><br>
-        Deira, Dubai, UAE<br>
-        PO Box: 376460
-    `).openPopup();
+    // Ensure map size is correct
+    setTimeout(() => {
+        map.invalidateSize();
+    }, 100);
+
+    // Add some CSS for the popup
+    const style = document.createElement('style');
+    style.textContent = `
+        .company-popup .leaflet-popup-content-wrapper {
+            border-radius: 8px;
+            padding: 0;
+        }
+        .company-popup .leaflet-popup-content {
+            margin: 0;
+        }
+        .leaflet-popup {
+            z-index: 1000 !important;
+        }
+    `;
+    document.head.appendChild(style);
 });
 // Contact Form Email Client Submission
 document.addEventListener('DOMContentLoaded', function () {
@@ -1269,6 +1317,262 @@ function initHeroSlider() {
         }
     });
 }
+// ===== Clients Carousel =====
+function initClientsCarousel() {
+    const clientsTrack = document.getElementById('clients-track');
+    const prevBtn = document.getElementById('prev-client');
+    const nextBtn = document.getElementById('next-client');
+    const currentCount = document.getElementById('current-client');
+    const totalCount = document.getElementById('total-clients');
+
+    if (!clientsTrack) return;
+
+    // Client logos data
+    const clients = [
+        {
+            id: 1,
+            name: "The Address Hotels & Resorts",
+            logo: "assets/imgs/logos/address.png",
+            url: "https://www.addresshotels.com/"
+        },
+        {
+            id: 2,
+            name: "DAMAC Group",
+            logo: "assets/imgs/logos/damac.png",
+            url: "https://www.damacproperties.com/"
+        },
+        {
+            id: 3,
+            name: "EMAAR Properties",
+            logo: "assets/imgs/logos/emaar.png",
+            url: "https://www.emaar.com/"
+        },
+        {
+            id: 4,
+            name: "KCAL Restaurant Group",
+            logo: "assets/imgs/logos/kcal.png",
+            url: "https://kcalrestaurants.com/"
+        },
+        {
+            id: 5,
+            name: "Dubai International Airport",
+            logo: "assets/imgs/logos/dubai-airport.png",
+            url: "https://www.dubaiairports.ae/"
+        },
+        {
+            id: 6,
+            name: "Dubai Mall",
+            logo: "assets/imgs/logos/dubai-mall.png",
+            url: "https://thedubaimall.com/"
+        },
+        {
+            id: 7,
+            name: "Majid Al Futtaim",
+            logo: "assets/imgs/logos/maf.png",
+            url: "https://www.majidalfuttaim.com/"
+        },
+        {
+            id: 8,
+            name: "Nakheel",
+            logo: "assets/imgs/logos/nakheel.png",
+            url: "https://www.nakheel.com/"
+        },
+        {
+            id: 9,
+            name: "Dubai World Trade Centre",
+            logo: "assets/imgs/logos/dwtc.png",
+            url: "https://www.dwtc.com/"
+        },
+        {
+            id: 10,
+            name: "Meraas",
+            logo: "assets/imgs/logos/meraas.png",
+            url: "https://www.meraas.com/"
+        },
+        {
+            id: 11,
+            name: "Dubai Silicon Oasis",
+            logo: "assets/imgs/logos/dso.png",
+            url: "https://www.dsoa.ae/"
+        },
+        {
+            id: 12,
+            name: "Dubai Festival City",
+            logo: "assets/imgs/logos/festival-city.png",
+            url: "https://www.festivalcentre.com/"
+        }
+    ];
+
+    // Create logo items
+    function createClientLogo(client) {
+        const logoItem = document.createElement('div');
+        logoItem.className = 'client-logo-item';
+        logoItem.setAttribute('data-client', client.name.toLowerCase().replace(/\s+/g, '-'));
+        logoItem.title = client.name;
+
+        const logoLink = document.createElement('a');
+        logoLink.href = client.url;
+        logoLink.target = '_blank';
+        logoLink.rel = 'noopener noreferrer';
+
+        const logoImg = document.createElement('img');
+        logoImg.src = client.logo;
+        logoImg.alt = `${client.name} Logo`;
+        logoImg.className = 'client-logo';
+        logoImg.loading = 'lazy';
+
+        // Handle image load errors
+        logoImg.onerror = function() {
+            this.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwIiBoZWlnaHQ9IjYwIiB2aWV3Qm94PSIwIDAgMTIwIDYwIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cmVjdCB3aWR0aD0iMTIwIiBoZWlnaHQ9IjYwIiByeD0iOCIgZmlsbD0iI0YxRjVGOSIvPgo8dGV4dCB4PSI1MCUiIHk9IjUwJSIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkludGVyLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjEycHgiIGZpbGw9IiM2NDc0OEIiIGZvbnQtd2VpZ2h0PSI2MDAiPgpDbGllbnQKPC90ZXh0Pgo8L3N2Zz4K';
+            console.warn(`Failed to load logo: ${client.logo}`);
+        };
+
+        logoLink.appendChild(logoImg);
+        logoItem.appendChild(logoLink);
+        return logoItem;
+    }
+
+    // Initialize carousel
+    function initCarousel() {
+        clientsTrack.innerHTML = '';
+        
+        // Add client logos to track
+        clients.forEach(client => {
+            const logoItem = createClientLogo(client);
+            clientsTrack.appendChild(logoItem);
+        });
+
+        // Duplicate items for seamless infinite scroll
+        const duplicateCount = 2; // Number of times to duplicate
+        for (let i = 0; i < duplicateCount; i++) {
+            clients.forEach(client => {
+                const logoItem = createClientLogo(client);
+                clientsTrack.appendChild(logoItem);
+            });
+        }
+
+        // Update counters
+        if (totalCount) {
+            totalCount.textContent = clients.length;
+        }
+        if (currentCount) {
+            currentCount.textContent = '1';
+        }
+    }
+
+    // Manual carousel controls
+    let isAnimating = false;
+    let currentPosition = 0;
+    const itemWidth = 180 + parseInt(getComputedStyle(document.documentElement).getPropertyValue('--space-xl').replace('rem', '')) * 16;
+    const visibleItems = 6;
+
+    function scrollCarousel(direction) {
+        if (isAnimating) return;
+        
+        isAnimating = true;
+        const trackWidth = clients.length * itemWidth;
+        
+        if (direction === 'next') {
+            currentPosition = (currentPosition + 1) % clients.length;
+            clientsTrack.style.transform = `translateX(-${(currentPosition % clients.length) * itemWidth}px)`;
+        } else {
+            currentPosition = (currentPosition - 1 + clients.length) % clients.length;
+            clientsTrack.style.transform = `translateX(-${(currentPosition % clients.length) * itemWidth}px)`;
+        }
+
+        // Update current count
+        if (currentCount) {
+            currentCount.textContent = currentPosition + 1;
+        }
+
+        // Reset animation flag
+        setTimeout(() => {
+            isAnimating = false;
+        }, 500);
+    }
+
+    // Event listeners for buttons
+    if (prevBtn) {
+        prevBtn.addEventListener('click', () => scrollCarousel('prev'));
+    }
+
+    if (nextBtn) {
+        nextBtn.addEventListener('click', () => scrollCarousel('next'));
+    }
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') {
+            scrollCarousel('prev');
+        } else if (e.key === 'ArrowRight') {
+            scrollCarousel('next');
+        }
+    });
+
+    // Touch/swipe support
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    clientsTrack.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+    });
+
+    clientsTrack.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+    });
+
+    function handleSwipe() {
+        const swipeThreshold = 50;
+        const swipeDistance = touchEndX - touchStartX;
+
+        if (Math.abs(swipeDistance) > swipeThreshold) {
+            if (swipeDistance > 0) {
+                // Swipe right - go to previous
+                scrollCarousel('prev');
+            } else {
+                // Swipe left - go to next
+                scrollCarousel('next');
+            }
+        }
+    }
+
+    // Auto-scroll with pause on hover
+    let autoScrollInterval;
+
+    function startAutoScroll() {
+        autoScrollInterval = setInterval(() => {
+            scrollCarousel('next');
+        }, 3000); // Change slide every 3 seconds
+    }
+
+    function stopAutoScroll() {
+        clearInterval(autoScrollInterval);
+    }
+
+    // Start auto-scroll
+    startAutoScroll();
+
+    // Pause auto-scroll on hover
+    clientsTrack.addEventListener('mouseenter', stopAutoScroll);
+    clientsTrack.addEventListener('mouseleave', startAutoScroll);
+
+    // Initialize carousel
+    initCarousel();
+
+    // Log carousel initialization
+    console.log(`Clients carousel initialized with ${clients.length} clients`);
+}
+
+// Initialize carousel when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    // ... your existing DOMContentLoaded code ...
+    
+    // Initialize clients carousel
+    initClientsCarousel();
+    
+    // ... rest of your initialization code ...
+});
 
 document.addEventListener('DOMContentLoaded', () => {
     initHeroSlider();

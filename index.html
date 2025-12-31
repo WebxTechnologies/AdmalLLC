@@ -14,6 +14,7 @@
     <!-- Fancybox CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/clients.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <link rel="icon" type="image/png" href="assets/imgs/admallc.png" />
 </head>
@@ -530,7 +531,38 @@
             </div>
         </div>
     </section>
+    <!-- Clients Carousel Section -->
+    <section id="clients" class="clients-section">
+        <div class="container">
+            <div class="clients-header">
+                <h2 class="clients-title">Trusted by Industry Leaders</h2>
+                <p class="clients-subtitle">We're proud to partner with leading companies across various sectors,
+                    delivering excellence in every project.</p>
+            </div>
 
+            <div class="clients-carousel-container">
+                <div class="clients-carousel">
+                    <div class="clients-track" id="clients-track">
+                        <!-- Client logos will be loaded via JavaScript -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="carousel-controls">
+                <button class="carousel-btn" id="prev-client">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="carousel-btn" id="next-client">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+<!-- 
+            <div class="client-counter">
+                <span class="current" id="current-client">1</span> / <span class="total" id="total-clients">0</span>
+                Clients
+            </div> -->
+        </div>
+    </section>
     <!-- Contact Section with Interactive Form -->
     <section id="contact" class="contact">
         <div class="container">
@@ -651,6 +683,7 @@
             </div>
         </div>
     </section>
+
 
     <!-- Footer -->
     <footer class="footer">
