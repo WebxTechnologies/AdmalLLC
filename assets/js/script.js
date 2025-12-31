@@ -468,6 +468,14 @@ const galleryData = [
         aspect: 'square'
     },
     {
+        id: 51,
+        category: 'fitouts',
+        // title: 'Event Venue',
+        // description: 'Multi-purpose space for corporate events',
+        image: 'assets/imgs/InteriorFitouts/38.png',
+        aspect: 'square'
+    },
+    {
         id: 38,
         category: 'mep',
         // title: 'Commercial MEP Integration',
@@ -555,6 +563,24 @@ const galleryData = [
         image: 'assets/imgs/DigitalSolutions/1.png',
         aspect: 'landscape'
     },
+    {
+        id: 49,
+        category: 'digital',
+        // title: 'Retail Digital Signage',
+        // description: 'Interactive digital displays for a retail shopping experience',
+        image: 'assets/imgs/DigitalSolutions/2.png',
+        aspect: 'landscape'
+    },
+    {
+        id: 50,
+        category: 'digital',
+        // title: 'Retail Digital Signage',
+        // description: 'Interactive digital displays for a retail shopping experience',
+        image: 'assets/imgs/DigitalSolutions/3.png',
+        aspect: 'landscape'
+    },
+
+    
 ];
 
 // ===== Shuffle Array Function =====
@@ -593,7 +619,7 @@ function createGalleryItem(item) {
     const galleryItem = document.createElement('a');
     galleryItem.href = item.image;
     galleryItem.setAttribute('data-fancybox', 'gallery');
-    galleryItem.setAttribute('data-caption', `<h3>${item.title}</h3><p>${item.description}</p><span class="gallery-category">${categoryNames[item.category]}</span>`);
+    galleryItem.setAttribute('data-caption', `<span class="gallery-category">${categoryNames[item.category]}</span>`);
     galleryItem.className = `gallery-item`;
     galleryItem.setAttribute('data-category', item.category);
 
@@ -1105,7 +1131,7 @@ document.addEventListener('DOMContentLoaded', function () {
             };
 
             // Your email address
-            const yourEmail = 'forcreative25@gmail.com';
+            const yourEmail = 'info@admal.me';
 
             // Email subject
             const subject = `New Project Inquiry - ${serviceNames[service] || service}`;
@@ -1325,82 +1351,189 @@ function initClientsCarousel() {
     const currentCount = document.getElementById('current-client');
     const totalCount = document.getElementById('total-clients');
 
-    if (!clientsTrack) return;
+    if (!clientsTrack) {
+        console.warn('Clients track element not found');
+        return;
+    }
 
-    // Client logos data
+    // Client logos data - Fixed: removed stray backtick
     const clients = [
         {
             id: 1,
             name: "The Address Hotels & Resorts",
             logo: "assets/imgs/logos/address.png",
-            url: "https://www.addresshotels.com/"
+            // url: "https://www.addresshotels.com/"
         },
         {
             id: 2,
             name: "DAMAC Group",
             logo: "assets/imgs/logos/damac.png",
-            url: "https://www.damacproperties.com/"
+            // url: "https://www.damacproperties.com/"
         },
         {
             id: 3,
             name: "EMAAR Properties",
             logo: "assets/imgs/logos/emaar.png",
-            url: "https://www.emaar.com/"
+            // url: "https://www.emaar.com/"
         },
         {
             id: 4,
             name: "KCAL Restaurant Group",
             logo: "assets/imgs/logos/kcal.png",
-            url: "https://kcalrestaurants.com/"
+            // url: "https://kcalrestaurants.com/"
         },
         {
             id: 5,
-            name: "Dubai International Airport",
-            logo: "assets/imgs/logos/dubai-airport.png",
-            url: "https://www.dubaiairports.ae/"
+            name: "ACCOR HOTELS",
+            logo: "assets/imgs/ClientLogos/1.png",
+            // url: "https://www.dubaiairports.ae/"
         },
         {
             id: 6,
-            name: "Dubai Mall",
-            logo: "assets/imgs/logos/dubai-mall.png",
-            url: "https://thedubaimall.com/"
+            name: "ROCKY Real Estate",
+            logo: "assets/imgs/ClientLogos/3.png",
         },
         {
             id: 7,
-            name: "Majid Al Futtaim",
-            logo: "assets/imgs/logos/maf.png",
-            url: "https://www.majidalfuttaim.com/"
+            name: "Mercure Hotels",
+            logo: "assets/imgs/ClientLogos/4.png",
         },
         {
             id: 8,
-            name: "Nakheel",
-            logo: "assets/imgs/logos/nakheel.png",
-            url: "https://www.nakheel.com/"
+            name: "Dubai Holding",
+            logo: "assets/imgs/ClientLogos/5.png",
         },
         {
             id: 9,
-            name: "Dubai World Trade Centre",
-            logo: "assets/imgs/logos/dwtc.png",
-            url: "https://www.dwtc.com/"
+            name: "MILLENNIUM HOTELS & RESORTS",
+            logo: "assets/imgs/ClientLogos/6.png",
         },
         {
             id: 10,
-            name: "Meraas",
-            logo: "assets/imgs/logos/meraas.png",
-            url: "https://www.meraas.com/"
+            name: "Mandara Holding",
+            logo: "assets/imgs/ClientLogos/7.png",
         },
         {
             id: 11,
-            name: "Dubai Silicon Oasis",
-            logo: "assets/imgs/logos/dso.png",
-            url: "https://www.dsoa.ae/"
+            name: "AKAN HOLDINGS",
+            logo: "assets/imgs/ClientLogos/8.png",
         },
         {
             id: 12,
-            name: "Dubai Festival City",
-            logo: "assets/imgs/logos/festival-city.png",
-            url: "https://www.festivalcentre.com/"
-        }
+            name: "FAB 1",
+            logo: "assets/imgs/ClientLogos/9.png",
+        },
+        {
+            id: 13,
+            name: "City Tower",
+            logo: "assets/imgs/ClientLogos/10.png",
+        },
+        {
+            id: 14,
+            name: "SERVEU",
+            logo: "assets/imgs/ClientLogos/11.png",
+        },
+        {
+            id: 15,
+            name: "Heritage Group",
+            logo: "assets/imgs/ClientLogos/12.png",
+        },
+        {
+            id: 16,
+            name: "mashreq",
+            logo: "assets/imgs/ClientLogos/13.png",
+        },
+        {
+            id: 17,
+            name: "nidco",
+            logo: "assets/imgs/ClientLogos/14.png",
+        },
+        {
+            id: 18,
+            name: "interem",
+            logo: "assets/imgs/ClientLogos/15.png",
+        },
+        {
+            id: 19,
+            name: "CHEESE LAND",
+            logo: "assets/imgs/ClientLogos/16.png",
+        },
+        {
+            id: 20,
+            name: "ARJ PROPERTIES",
+            logo: "assets/imgs/ClientLogos/17.png",
+        },
+        {
+            id: 21,
+            name: "Dutch & Spanish General Contracting LLC",
+            logo: "assets/imgs/ClientLogos/18.png",
+        },
+        {
+            id: 22,
+            name: "lightworks",
+            logo: "assets/imgs/ClientLogos/19.png",
+        },
+        {
+            id: 23,
+            name: "fratelli la bufala",
+            logo: "assets/imgs/ClientLogos/20.png",
+        },
+        {
+            id: 24,
+            name: "Siomai House",
+            logo: "assets/imgs/ClientLogos/21.png",
+        },
+        {
+            id: 25,
+            name: "Cafe Mandarina",
+            logo: "assets/imgs/ClientLogos/22.png",
+        },
+        {
+            id: 26,
+            name: "GMTS",
+            logo: "assets/imgs/ClientLogos/23.png",
+        },
+        {
+            id: 27,
+            name: "arabtec",
+            logo: "assets/imgs/ClientLogos/24.png",
+        },
+        //25.png
+        {
+            id: 28,
+            name: "SALT",
+            logo: "assets/imgs/ClientLogos/27.png",
+        },
+        {
+            id: 30,
+            name: "master systems",
+            logo: "assets/imgs/ClientLogos/29.png",
+        },
+        {
+            id: 30,
+            name: "switch",
+            logo: "assets/imgs/ClientLogos/28.png",
+        },
+        {
+            id: 31,
+            name: "RAMADA By WYNDHAM",
+            logo: "assets/imgs/ClientLogos/30.png",
+        },
+        {
+            id: 32,
+            name: "Hampton by HITLON",
+            logo: "assets/imgs/ClientLogos/31.png",
+        },
+        {
+            id: 33,
+            name: "FREIGHT INTERNATIONAL",
+            logo: "assets/imgs/ClientLogos/33.png",
+        },
+        {
+            id: 34,
+            name: "GAC",
+            logo: "assets/imgs/ClientLogos/34.png",
+        },
     ];
 
     // Create logo items
@@ -1410,25 +1543,44 @@ function initClientsCarousel() {
         logoItem.setAttribute('data-client', client.name.toLowerCase().replace(/\s+/g, '-'));
         logoItem.title = client.name;
 
-        const logoLink = document.createElement('a');
-        logoLink.href = client.url;
-        logoLink.target = '_blank';
-        logoLink.rel = 'noopener noreferrer';
+        // Only create link if URL exists
+        if (client.url) {
+            const logoLink = document.createElement('a');
+            logoLink.href = client.url;
+            logoLink.target = '_blank';
+            logoLink.rel = 'noopener noreferrer';
 
-        const logoImg = document.createElement('img');
-        logoImg.src = client.logo;
-        logoImg.alt = `${client.name} Logo`;
-        logoImg.className = 'client-logo';
-        logoImg.loading = 'lazy';
+            const logoImg = document.createElement('img');
+            logoImg.src = client.logo;
+            logoImg.alt = `${client.name} Logo`;
+            logoImg.className = 'client-logo';
+            logoImg.loading = 'lazy';
 
-        // Handle image load errors
-        logoImg.onerror = function() {
-            this.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwIiBoZWlnaHQ9IjYwIiB2aWV3Qm94PSIwIDAgMTIwIDYwIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cmVjdCB3aWR0aD0iMTIwIiBoZWlnaHQ9IjYwIiByeD0iOCIgZmlsbD0iI0YxRjVGOSIvPgo8dGV4dCB4PSI1MCUiIHk9IjUwJSIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkludGVyLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjEycHgiIGZpbGw9IiM2NDc0OEIiIGZvbnQtd2VpZ2h0PSI2MDAiPgpDbGllbnQKPC90ZXh0Pgo8L3N2Zz4K';
-            console.warn(`Failed to load logo: ${client.logo}`);
-        };
+            // Handle image load errors
+            logoImg.onerror = function() {
+                this.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwIiBoZWlnaHQ9IjYwIiB2aWV3Qm94PSIwIDAgMTIwIDYwIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cmVjdCB3aWR0aD0iMTIwIiBoZWlnaHQ9IjYwIiByeD0iOCIgZmlsbD0iI0YxRjVGOSIvPgo8dGV4dCB4PSI1MCUiIHk9IjUwJSIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkludGVyLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjEycHgiIGZpbGw9IiM2NDc0OEIiIGZvbnQtd2VpZ2h0PSI2MDAiPgpDbGllbnQKPC90ZXh0Pgo8L3N2Zz4K';
+                console.warn(`Failed to load logo: ${client.logo}`);
+            };
 
-        logoLink.appendChild(logoImg);
-        logoItem.appendChild(logoLink);
+            logoLink.appendChild(logoImg);
+            logoItem.appendChild(logoLink);
+        } else {
+            // Create image without link
+            const logoImg = document.createElement('img');
+            logoImg.src = client.logo;
+            logoImg.alt = `${client.name} Logo`;
+            logoImg.className = 'client-logo';
+            logoImg.loading = 'lazy';
+
+            // Handle image load errors
+            logoImg.onerror = function() {
+                this.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwIiBoZWlnaHQ9IjYwIiB2aWV3Qm94PSIwIDAgMTIwIDYwIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cmVjdCB3aWR0aD0iMTIwIiBoZWlnaHQ9IjYwIiByeD0iOCIgZmlsbD0iI0YxRjVGOSIvPgo8dGV4dCB4PSI1MCUiIHk9IjUwJSIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkludGVyLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjEycHgiIGZpbGw9IiM2NDc0OEIiIGZvbnQtd2VpZ2h0PSI2MDAiPgpDbGllbnQKPC90ZXh0Pgo8L3N2Zz4K';
+                console.warn(`Failed to load logo: ${client.logo}`);
+            };
+
+            logoItem.appendChild(logoImg);
+        }
+        
         return logoItem;
     }
 
@@ -1453,36 +1605,49 @@ function initClientsCarousel() {
 
         // Update counters
         if (totalCount) {
-            totalCount.textContent = clients.length;
+            totalCount.textContent = clients.length.toString().padStart(2, '0');
         }
         if (currentCount) {
-            currentCount.textContent = '1';
+            currentCount.textContent = '01';
         }
     }
 
     // Manual carousel controls
     let isAnimating = false;
     let currentPosition = 0;
-    const itemWidth = 180 + parseInt(getComputedStyle(document.documentElement).getPropertyValue('--space-xl').replace('rem', '')) * 16;
-    const visibleItems = 6;
+    
+    // Get item width with fallback if CSS variable is not available
+    const getItemWidth = () => {
+        const spaceXl = getComputedStyle(document.documentElement).getPropertyValue('--space-xl');
+        let gap = 16; // Default fallback in pixels
+        
+        if (spaceXl) {
+            const remValue = parseFloat(spaceXl.replace('rem', ''));
+            gap = remValue * 16; // Convert rem to pixels (1rem = 16px)
+        }
+        
+        return 180 + gap; // Logo width + gap
+    };
+    
+    const itemWidth = getItemWidth();
 
     function scrollCarousel(direction) {
         if (isAnimating) return;
         
         isAnimating = true;
-        const trackWidth = clients.length * itemWidth;
         
         if (direction === 'next') {
             currentPosition = (currentPosition + 1) % clients.length;
-            clientsTrack.style.transform = `translateX(-${(currentPosition % clients.length) * itemWidth}px)`;
         } else {
             currentPosition = (currentPosition - 1 + clients.length) % clients.length;
-            clientsTrack.style.transform = `translateX(-${(currentPosition % clients.length) * itemWidth}px)`;
         }
+        
+        clientsTrack.style.transform = `translateX(-${(currentPosition % clients.length) * itemWidth}px)`;
+        clientsTrack.style.transition = 'transform 0.5s ease-in-out';
 
-        // Update current count
+        // Update current count with leading zero
         if (currentCount) {
-            currentCount.textContent = currentPosition + 1;
+            currentCount.textContent = (currentPosition + 1).toString().padStart(2, '0');
         }
 
         // Reset animation flag
@@ -1502,10 +1667,15 @@ function initClientsCarousel() {
 
     // Keyboard navigation
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'ArrowLeft') {
-            scrollCarousel('prev');
-        } else if (e.key === 'ArrowRight') {
-            scrollCarousel('next');
+        if (document.activeElement === clientsTrack || 
+            clientsTrack.contains(document.activeElement)) {
+            if (e.key === 'ArrowLeft') {
+                e.preventDefault();
+                scrollCarousel('prev');
+            } else if (e.key === 'ArrowRight') {
+                e.preventDefault();
+                scrollCarousel('next');
+            }
         }
     });
 
@@ -1515,12 +1685,12 @@ function initClientsCarousel() {
 
     clientsTrack.addEventListener('touchstart', (e) => {
         touchStartX = e.changedTouches[0].screenX;
-    });
+    }, { passive: true });
 
     clientsTrack.addEventListener('touchend', (e) => {
         touchEndX = e.changedTouches[0].screenX;
         handleSwipe();
-    });
+    }, { passive: true });
 
     function handleSwipe() {
         const swipeThreshold = 50;
@@ -1541,13 +1711,20 @@ function initClientsCarousel() {
     let autoScrollInterval;
 
     function startAutoScroll() {
+        stopAutoScroll(); // Clear any existing interval
+        
         autoScrollInterval = setInterval(() => {
-            scrollCarousel('next');
+            if (!isAnimating) {
+                scrollCarousel('next');
+            }
         }, 3000); // Change slide every 3 seconds
     }
 
     function stopAutoScroll() {
-        clearInterval(autoScrollInterval);
+        if (autoScrollInterval) {
+            clearInterval(autoScrollInterval);
+            autoScrollInterval = null;
+        }
     }
 
     // Start auto-scroll
@@ -1556,41 +1733,64 @@ function initClientsCarousel() {
     // Pause auto-scroll on hover
     clientsTrack.addEventListener('mouseenter', stopAutoScroll);
     clientsTrack.addEventListener('mouseleave', startAutoScroll);
-
+    
     // Initialize carousel
     initCarousel();
-
-    // Log carousel initialization
+    
+    // Handle window resize
+    let resizeTimeout;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+            // Recalculate item width and reset position
+            const newItemWidth = getItemWidth();
+            if (itemWidth !== newItemWidth) {
+                clientsTrack.style.transform = `translateX(-${(currentPosition % clients.length) * newItemWidth}px)`;
+            }
+        }, 250);
+    });
+    
     console.log(`Clients carousel initialized with ${clients.length} clients`);
 }
 
-// Initialize carousel when DOM is loaded
+// Main initialization - only one DOMContentLoaded listener
 document.addEventListener('DOMContentLoaded', () => {
-    // ... your existing DOMContentLoaded code ...
-    
     // Initialize clients carousel
     initClientsCarousel();
     
-    // ... rest of your initialization code ...
-});
+    // Note: These functions need to be defined elsewhere in your code
+    // If they don't exist, wrap them in try-catch or check if they exist first
+    
+    try {
+        if (typeof initHeroSlider === 'function') {
+            initHeroSlider();
+        }
+        
+        const isHomepage = document.querySelector('#gallery .gallery-grid');
+        const isGalleryPage = document.querySelector('.full-gallery-grid');
 
-document.addEventListener('DOMContentLoaded', () => {
-    initHeroSlider();
-
-    const isHomepage = document.querySelector('#gallery .gallery-grid');
-    const isGalleryPage = document.querySelector('.full-gallery-grid');
-
-    if (isHomepage) {
-        initHomepageGallery();
-    } else if (isGalleryPage) {
-        initFullGallery();
+        if (isHomepage && typeof initHomepageGallery === 'function') {
+            initHomepageGallery();
+        } else if (isGalleryPage && typeof initFullGallery === 'function') {
+            initFullGallery();
+        }
+        
+        if (typeof initTestimonials === 'function') {
+            initTestimonials();
+        }
+        
+        if (typeof startTestimonialRotation === 'function') {
+            startTestimonialRotation();
+        }
+        
+        if (typeof checkUrlFilter === 'function') {
+            checkUrlFilter();
+        }
+        
+        if (typeof updateActiveSection === 'function') {
+            updateActiveSection();
+        }
+    } catch (error) {
+        console.warn('Some initialization functions are not defined:', error.message);
     }
-
-    initTestimonials();
-
-    startTestimonialRotation();
-
-    checkUrlFilter();
-
-    updateActiveSection();
 });
