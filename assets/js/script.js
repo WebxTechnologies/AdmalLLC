@@ -476,6 +476,118 @@ const galleryData = [
         aspect: 'square'
     },
     {
+        id: 52,
+        category: 'fitouts',
+        // title: 'Event Venue',
+        // description: 'Multi-purpose space for corporate events',
+        image: 'assets/imgs/InteriorFitouts/39.png',
+        aspect: 'square'
+    },
+    {
+        id: 53,
+        category: 'fitouts',
+        // title: 'Event Venue',
+        // description: 'Multi-purpose space for corporate events',
+        image: 'assets/imgs/InteriorFitouts/40.png',
+        aspect: 'square'
+    },
+    {
+        id: 54,
+        category: 'fitouts',
+        // title: 'Event Venue',
+        // description: 'Multi-purpose space for corporate events',
+        image: 'assets/imgs/InteriorFitouts/41.png',
+        aspect: 'square'
+    },
+    {
+        id: 55,
+        category: 'fitouts',
+        // title: 'Event Venue',
+        // description: 'Multi-purpose space for corporate events',
+        image: 'assets/imgs/InteriorFitouts/42.png',
+        aspect: 'square'
+    },
+    {
+        id: 56,
+        category: 'fitouts',
+        // title: 'Event Venue',
+        // description: 'Multi-purpose space for corporate events',
+        image: 'assets/imgs/InteriorFitouts/43.png',
+        aspect: 'square'
+    },
+    {
+        id: 57,
+        category: 'fitouts',
+        // title: 'Event Venue',
+        // description: 'Multi-purpose space for corporate events',
+        image: 'assets/imgs/InteriorFitouts/44.png',
+        aspect: 'square'
+    },
+    {
+        id: 58,
+        category: 'fitouts',
+        // title: 'Event Venue',
+        // description: 'Multi-purpose space for corporate events',
+        image: 'assets/imgs/InteriorFitouts/45.png',
+        aspect: 'square'
+    },
+    {
+        id: 59,
+        category: 'fitouts',
+        // title: 'Event Venue',
+        // description: 'Multi-purpose space for corporate events',
+        image: 'assets/imgs/InteriorFitouts/46.png',
+        aspect: 'square'
+    },
+    {
+        id: 60,
+        category: 'fitouts',
+        // title: 'Event Venue',
+        // description: 'Multi-purpose space for corporate events',
+        image: 'assets/imgs/InteriorFitouts/47.png',
+        aspect: 'square'
+    },
+    {
+        id: 61,
+        category: 'fitouts',
+        // title: 'Event Venue',
+        // description: 'Multi-purpose space for corporate events',
+        image: 'assets/imgs/InteriorFitouts/48.png',
+        aspect: 'square'
+    },
+    {
+        id: 62,
+        category: 'fitouts',
+        // title: 'Event Venue',
+        // description: 'Multi-purpose space for corporate events',
+        image: 'assets/imgs/InteriorFitouts/49.png',
+        aspect: 'square'
+    },
+    {
+        id: 63,
+        category: 'fitouts',
+        // title: 'Event Venue',
+        // description: 'Multi-purpose space for corporate events',
+        image: 'assets/imgs/InteriorFitouts/50.png',
+        aspect: 'square'
+    },
+    {
+        id: 64,
+        category: 'fitouts',
+        // title: 'Event Venue',
+        // description: 'Multi-purpose space for corporate events',
+        image: 'assets/imgs/InteriorFitouts/51.png',
+        aspect: 'square'
+    },
+    {
+        id: 65,
+        category: 'fitouts',
+        // title: 'Event Venue',
+        // description: 'Multi-purpose space for corporate events',
+        image: 'assets/imgs/InteriorFitouts/52.png',
+        aspect: 'square'
+    },
+    {
         id: 38,
         category: 'mep',
         // title: 'Commercial MEP Integration',
@@ -556,6 +668,102 @@ const galleryData = [
         aspect: 'square'
     },
     {
+        id: 66,
+        category: 'mep',
+        // title: 'BMS Installation',
+        // description: 'Building Management System setup',
+        image: 'assets/imgs/MEPServices/11.png',
+        aspect: 'square'
+    },
+    {
+        id: 67,
+        category: 'mep',
+        // title: 'BMS Installation',
+        // description: 'Building Management System setup',
+        image: 'assets/imgs/MEPServices/12.png',
+        aspect: 'square'
+    },
+    {
+        id: 68,
+        category: 'mep',
+        // title: 'BMS Installation',
+        // description: 'Building Management System setup',
+        image: 'assets/imgs/MEPServices/13.png',
+        aspect: 'square'
+    },
+    {
+        id: 69,
+        category: 'mep',
+        // title: 'BMS Installation',
+        // description: 'Building Management System setup',
+        image: 'assets/imgs/MEPServices/14.png',
+        aspect: 'square'
+    },
+    {
+        id: 70,
+        category: 'mep',
+        // title: 'BMS Installation',
+        // description: 'Building Management System setup',
+        image: 'assets/imgs/MEPServices/15.png',
+        aspect: 'square'
+    },
+    {
+        id: 71,
+        category: 'mep',
+        // title: 'BMS Installation',
+        // description: 'Building Management System setup',
+        image: 'assets/imgs/MEPServices/16.png',
+        aspect: 'square'
+    },
+    {
+        id: 72,
+        category: 'mep',
+        // title: 'BMS Installation',
+        // description: 'Building Management System setup',
+        image: 'assets/imgs/MEPServices/17.png',
+        aspect: 'square'
+    },
+    {
+        id: 73,
+        category: 'mep',
+        // title: 'BMS Installation',
+        // description: 'Building Management System setup',
+        image: 'assets/imgs/MEPServices/18.png',
+        aspect: 'square'
+    },
+    {
+        id: 74,
+        category: 'mep',
+        // title: 'BMS Installation',
+        // description: 'Building Management System setup',
+        image: 'assets/imgs/MEPServices/19.png',
+        aspect: 'square'
+    },
+    {
+        id: 75,
+        category: 'mep',
+        // title: 'BMS Installation',
+        // description: 'Building Management System setup',
+        image: 'assets/imgs/MEPServices/20.png',
+        aspect: 'square'
+    },
+    {
+        id: 76,
+        category: 'mep',
+        // title: 'BMS Installation',
+        // description: 'Building Management System setup',
+        image: 'assets/imgs/MEPServices/21.png',
+        aspect: 'square'
+    },
+    {
+        id: 77,
+        category: 'mep',
+        // title: 'BMS Installation',
+        // description: 'Building Management System setup',
+        image: 'assets/imgs/MEPServices/22.png',
+        aspect: 'square'
+    },
+    {
         id: 48,
         category: 'digital',
         // title: 'Retail Digital Signage',
@@ -577,6 +785,38 @@ const galleryData = [
         // title: 'Retail Digital Signage',
         // description: 'Interactive digital displays for a retail shopping experience',
         image: 'assets/imgs/DigitalSolutions/3.png',
+        aspect: 'landscape'
+    },
+    {
+        id: 78,
+        category: 'digital',
+        // title: 'Retail Digital Signage',
+        // description: 'Interactive digital displays for a retail shopping experience',
+        image: 'assets/imgs/DigitalSolutions/4.png',
+        aspect: 'landscape'
+    },
+    {
+        id: 79,
+        category: 'digital',
+        // title: 'Retail Digital Signage',
+        // description: 'Interactive digital displays for a retail shopping experience',
+        image: 'assets/imgs/DigitalSolutions/5.png',
+        aspect: 'landscape'
+    },
+    {
+        id: 80,
+        category: 'digital',
+        // title: 'Retail Digital Signage',
+        // description: 'Interactive digital displays for a retail shopping experience',
+        image: 'assets/imgs/DigitalSolutions/6.png',
+        aspect: 'landscape'
+    },
+    {
+        id: 81,
+        category: 'digital',
+        // title: 'Retail Digital Signage',
+        // description: 'Interactive digital displays for a retail shopping experience',
+        image: 'assets/imgs/DigitalSolutions/7.png',
         aspect: 'landscape'
     },
 
