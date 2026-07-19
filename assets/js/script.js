@@ -1199,29 +1199,6 @@ function checkUrlFilter() {
     }
 }
 
-// ===== Service Cards Hover Effect =====
-const serviceCards = document.querySelectorAll('.service-card');
-
-serviceCards.forEach(card => {
-    card.addEventListener('mousemove', (e) => {
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
-
-        const rotateY = (x - centerX) / 25;
-        const rotateX = (centerY - y) / 25;
-
-        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px)`;
-    });
-
-    card.addEventListener('mouseleave', () => {
-        card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
-    });
-});
-
 // ===== Newsletter Form =====
 const newsletterForm = document.querySelector('.newsletter-form');
 if (newsletterForm) {
